@@ -1,0 +1,11 @@
+/* label css starts here */
+
+label {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: rgb(51, 60, 78);
+    margin-bottom: 4px;
+}
+
+/* label css ends here */

@@ -1,0 +1,78 @@
+/* footer css starts here*/
+
+footer {
+    background-color: #fff;
+}
+
+.login_footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 43px 0;
+}
+
+.footer-links ul {
+    display: flex;
+    margin-bottom: 0px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-links ul li {
+    padding: 0 0px 0 38px;
+}
+
+.footer-links ul li a {
+    padding: .5rem;
+    color: rgb(51, 60, 78);
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+}
+
+.brand-footer {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(51, 60, 78);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.brand-footer img {
+    margin-right: 6px;
+}
+
+.brand-footer:hover, .brand-footer:focus {
+    color: rgb(51, 60, 78);
+    text-decoration: none;
+}
+
+
+@media (max-width: 767px) {
+    .footer-links ul li {
+        padding: 0;
+    }
+
+    .footer-links {
+        width: 100%;
+    }
+
+    .footer-links ul {
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .login_footer {
+        flex-direction: column;
+    }
+
+    .brand-footer {
+        margin-bottom: 30px;
+    }
+}
+
+/* footer css ends here*/
