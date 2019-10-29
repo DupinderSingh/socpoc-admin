@@ -10,7 +10,7 @@ class Sidebar extends React.Component {
                 <div className="logo">
                     <div className="logo__txt"><img src={require("../../../images/logo-dash.png")} alt=""/><h5
                         className="sporti"
-                        style={{display: "none"}}>SocPoc Admin</h5></div>
+                        style={{display: "none"}}>Socpoc Admin</h5></div>
                 </div>
                 <div className="l-sidebar__content">
                     <nav className="c-menu js-menu">

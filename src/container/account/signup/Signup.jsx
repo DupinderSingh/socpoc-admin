@@ -51,7 +51,7 @@ class Signup extends React.Component {
                             <div className="overlay">
                                 <div className="logo text-center mb-4"><img src={require("../../../images/logo.svg")}
                                                                             alt=""/></div>
-                                <h2>Welcome to<br/><span> SocPoc Admin</span></h2>
+                                <h2>Welcome to<br/><span> Socpoc Admin</span></h2>
                             </div>
                         </div>
                     </div>
