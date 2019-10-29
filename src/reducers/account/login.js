@@ -2,7 +2,7 @@ import {getCookie} from "../../actions/app";
 
 const initialState = {
     auth: {
-        isAuthenticated: true
+        isAuthenticated: false
     }
 };
 
