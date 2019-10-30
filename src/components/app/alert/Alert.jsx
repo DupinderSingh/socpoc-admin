@@ -12,7 +12,7 @@ class Alert extends Component {
                 role="alert">
                 <div className="d-flex align-items-center">
                     <div className="alert-icon-col">
-                        <span className="fa fa-warning"></span>
+                        <span className="fa fa-warning"/>
                     </div>
                     <div className="alert_text">
                         {errorMessage}

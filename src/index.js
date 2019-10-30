@@ -7,6 +7,7 @@ import {applyMiddleware, createStore} from "redux";
 import {BrowserRouter, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css';
+import './styles/developer.css';
 import "./styles/js/index";
 import combineReducers from "./reducers/index";
 import getApi from "./middleware/token/get-api";

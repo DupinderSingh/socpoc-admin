@@ -31,17 +31,6 @@ export function authApi() {
     }
 }
 
-export function linkedinRedirectUrl() {
-    switch (window.location.hostname) {
-        case "localhost":
-            return "https://honeycomb.iapplabz.co.in";
-        case "192.168.1.107":
-            return "http://192.168.1.107:3005/dashboard";
-        default:
-            return "https://honeycomb.iapplabz.co.in/dashboard"
-    }
-}
-
 export function checkValidation(e) {
     if (e.target.checkValidity()) {
         if (e.target.type === "select-one") {

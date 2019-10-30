@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="21px" viewBox="0 0 19 21" version="1.1" xmlns="http://www.w3.org/2000/svg"
+>
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>Send</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-4.7%" y="-17.6%" width="109.4%" height="135.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.107981862 0" type="matrix"
+                           in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="honeycomb004_01_onboard1" transform="translate(-637.000000, -700.000000)" fill="#FFFFFF">
+            <g id="Group-7" transform="translate(542.000000, 690.000000)">
+                <g id="Group-4" filter="url(#filter-1)">
+                    <g id="Group-3" transform="translate(26.000000, 10.000000)">
+                        <g id="Send" transform="translate(70.000000, 0.000000)">
+                            <path d="M16.1768421,7.80146341 L2.30842105,0.33804878 C1.89272958,0.114844066 1.38790747,0.123295263 0.980215692,0.360284188 C0.572523918,0.597273112 0.322390388,1.02767336 0.322105263,1.49268293 L0.322105263,16.4195122 C0.322390388,16.8845218 0.572523918,17.314922 0.980215692,17.5519109 C1.38790747,17.7888999 1.89272958,17.7973511 2.30842105,17.5741463 L16.1768421,10.1107317 C16.6063248,9.87943563 16.8732628,9.43686436 16.8732628,8.95609756 C16.8732628,8.47533076 16.6063248,8.03275949 16.1768421,7.80146341 L16.1768421,7.80146341 Z M1.66421053,16.4195122 L1.66421053,9.83414634 L7.48,9.83414634 C7.85061213,9.83414634 8.15105263,9.53930947 8.15105263,9.17560976 C8.15105263,8.81191004 7.85061213,8.51707317 7.48,8.51707317 L1.66421053,8.51707317 L1.66421053,1.49268293 L15.5326316,8.95609756 L1.66421053,16.4195122 Z"
+                                  id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

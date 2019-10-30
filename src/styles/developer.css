@@ -1,0 +1,11 @@
+/*error success message starts*/
+.form-group.has-error .with-error, .error {
+    display: block;
+    color: #d50000;
+    font-size: 13px;
+    margin-top: 5px
+}
+
+.form-group .with-error {
+    display: none
+}
