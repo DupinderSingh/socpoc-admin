@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import {store} from './index';
 import Header from "./components/app/header/Header";
-import Footer from "./components/app/footer/Footer";
 import Dashboard from './container/dashboard/Dashboard';
 import Login from "./container/account/login/Login";
 import Signup from "./container/account/signup/Signup";
@@ -61,7 +60,7 @@ class RouteComponent extends Component {
                     <ProtectedRoute path="/signup" component={Signup}/>
                     <BodyWrapper props={this.props}/>
                 </Switch>
-                <Footer/>
+                {/*<Footer/>*/}
                 {/*<NotificationContainer/>*/}
             </div>
         )

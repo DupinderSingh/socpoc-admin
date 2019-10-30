@@ -1,11 +1,23 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
+import Pagination from "react-js-pagination";
+import moment from "moment";
 import './Dashboard.css';
-
-let thi = null;
+import {changePageNumber, clearUsersApiResponse, getUsers} from "../../actions/dashbaord/dashboard";
 
 class Dashboard extends React.Component {
+    componentDidMount() {
+        this.props.dispatch(changePageNumber(1));
+        this.props.dispatch(clearUsersApiResponse());
+        this.props.dispatch(getUsers(1));
+    }
+
+    handlePageChange(pageNumber) {
+        this.props.dispatch(changePageNumber(pageNumber));
+        this.props.dispatch(getUsers(pageNumber));
+    }
+
     render() {
         return (
             <main className="l-main">
@@ -20,71 +32,75 @@ class Dashboard extends React.Component {
                             <thead>
                             <tr>
                                 <th scope="col">S.No</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Location</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Active Status</th>
+                                <th scope="col">Created At</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><span className="image-user"><img src={require("../../images/user1.png")}
-                                                                      alt="Avatar"
-                                                                      className="avatar"/></span>Mark
-                                </td>
-                                <td>Otto</td>
-                                <td>Athlete</td>
-                                <td>Pune</td>
-                                <td>Markotto@gmial.com</td>
-                                <td>
-                                    <span><i className="fas fa-eye"></i></span>
-                                    <span><i className="fas fa-pen"></i></span>
-                                    <button type="button" className="btn btn-primary btn-pop" data-toggle="modal"
-                                            data-target="#exampleModalCenter"><span><i className="far fa-trash-alt"></i></span>
-                                    </button>
-                                    <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
-                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div className="modal-dialog modal-dialog-centered" role="document">
-                                            <div className="modal-content">
-                                                <div className="modal-body text-center">
-                                                    <h4 className="sure">Are you sure ?</h4>
-                                                    <p>you want to delete John Smith</p>
-                                                    <div className="text-center button_action">
-                                                        <button type="button" className="btn btn-secondary yes">Yes
-                                                        </button>
-                                                        <button type="button" className="btn btn-primary no"
-                                                                data-dismiss="modal">No
-                                                        </button>
+                            {
+                                !this.props.usersPageLoading && !this.props.usersError && this.props.users.length > 0 &&
+                                this.props.users.map((user, index) => (
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td><span className="image-user">
+                                            <img
+                                                src={!!user.image ? user.image : require("../../images/person-placeholder.jpg")}
+                                                alt="Avatar"
+                                                className="avatar"/></span>{user.name}
+                                        </td>
+                                        <td>{user.email}</td>
+                                        <td>{user.country}</td>
+                                        <td>{user.status === 1 ? "active" : "inactive"}</td>
+                                        <td>{moment(user.createdAt).fromNow()}</td>
+                                        <td>
+                                            <span><i className="material-icons">
+                                                visibility
+                                                </i></span>
+                                            <span><i className="material-icons">
+                                                edit
+                                                </i></span>
+                                            <span><i className="material-icons">
+                                                restore_from_trash
+                                                </i></span>
+                                            <div className="modal fade" id="exampleModalCenter" tabIndex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div className="modal-dialog modal-dialog-centered" role="document">
+                                                    <div className="modal-content">
+                                                        <div className="modal-body text-center">
+                                                            <h4 className="sure">Are you sure ?</h4>
+                                                            <p>you want to delete John Smith</p>
+                                                            <div className="text-center button_action">
+                                                                <button type="button"
+                                                                        className="btn btn-secondary yes">Yes
+                                                                </button>
+                                                                <button type="button" className="btn btn-primary no"
+                                                                        data-dismiss="modal">No
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td><span className="image-user"><img src={require("../../images/user2.png")}
-                                                                      alt="Avatar"
-                                                                      className="avatar"/></span>Jacob
-                                </td>
-                                <td>Thornton</td>
-                                <td>Athlete</td>
-                                <td>Pune</td>
-                                <td>Thornton@gmial.com</td>
-                                <td>
-                                    <span><i className="fas fa-eye"></i></span>
-                                    <span><i className="fas fa-pen"></i></span>
-                                    <button type="button" className="btn btn-primary btn-pop" data-toggle="modal"
-                                            data-target="#exampleModalCenter"><span><i className="far fa-trash-alt"></i></span>
-                                    </button>
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                             </tbody>
                         </table>
+                        <div className="pagin">
+                            <Pagination
+                                activePage={this.props.usersPageNumber}
+                                itemsCountPerPage={10}
+                                totalItemsCount={this.props.totalUsersCount}
+                                pageRangeDisplayed={3}
+                                onChange={this.handlePageChange.bind(this)}
+                            />
+                        </div>
                     </div>
                 </div>
             </main>
@@ -93,7 +109,24 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {state}
+    const {
+        usersPageNumber,
+        usersPageLoading,
+        usersStatus,
+        usersError,
+        usersMessage,
+        users,
+        totalUsersCount
+    } = state.dashboardReducer;
+    return {
+        usersPageNumber,
+        usersPageLoading,
+        usersStatus,
+        usersError,
+        usersMessage,
+        users,
+        totalUsersCount
+    }
 };
 
 export default withRouter(connect(mapStateToProps)(Dashboard))

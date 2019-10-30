@@ -9,3 +9,40 @@
 .form-group .with-error {
     display: none
 }
+
+/*pagination starts*/
+.pagination > li > a, .pagination > li > span {
+    border-color: #dedede;
+    border-radius: 0 !important;
+    float: right !important;
+    color: rgba(240, 151, 25, 1);
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > a:active, .pagination > li > span:hover, .pagination > li > span:focus, .pagination > li > span:active {
+    border-color: rgba(240, 151, 25, 1);
+    background-color: rgba(240, 151, 25, 1);
+}
+
+.pagination > li.active > a:hover, .pagination > li.active > a:focus, .pagination > li.active > a:active, .pagination > li.active > span:hover, .pagination > li.active > span:focus, .pagination > li.active > span:active {
+    background: rgba(240, 151, 25, 1);
+    border-color: rgba(240, 151, 25, 1);
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    border-color: #dedede;
+    color: rgba(240, 151, 25, 1);
+}
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    color: #fff;
+}
+
+/*pagination ends*/
+
+main table.custom-table td span i {
+    font-size: 22px !important;
+}
+
+ul.pagination li {
+    padding: 10px !important;
+}
