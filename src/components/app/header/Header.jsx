@@ -1,8 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {changeAuthantication, logout} from "../../../actions/account/login";
+import {setCookie} from "../../../actions/app/index";
 
 class Header extends React.Component {
+    logoutAdmin() {
+        this.props.dispatch(logout());
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (!nextProps.logoutError && nextProps.logoutStatus === 200) {
+            localStorage.clear();
+            sessionStorage.clear();
+            setCookie("token", "", 0);
+            setCookie("userId", "", 0);
+            nextProps.dispatch(changeAuthantication(false));
+            nextProps.history.push("/login");
+        }
+    }
+
     render() {
         return (
             <header className="l-header">
@@ -37,7 +54,7 @@ class Header extends React.Component {
                                             }}>
                                             <li><a href="#">Edit</a></li>
                                             <li><a href="#">Change Password</a></li>
-                                            <li><a href="#">Log out</a></li>
+                                            <li onClick={this.logoutAdmin.bind(this)}><a href="#">Log out</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -52,7 +69,14 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {state}
+    const {
+        logoutStatus,
+        logoutError
+    } = state.loginReducer;
+    return {
+        logoutStatus,
+        logoutError
+    }
 };
 
 export default withRouter(connect(mapStateToProps)(Header))

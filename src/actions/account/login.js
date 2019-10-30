@@ -40,7 +40,7 @@ export const changeAuthantication = (status) => {
 export const logout = () => {
     return {
         [CALL_POST_API]: {
-            endpoint: AUTH_API + '/logout',
+            endpoint: AUTH_API + '/admin/logout',
             types: [LOGOUT_API_REQUEST, LOGOUT_API_SUCCESS, LOGOUT_API_FAILURE],
             token: getCookie("token")
         }

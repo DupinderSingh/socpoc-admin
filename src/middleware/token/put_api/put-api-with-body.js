@@ -1,5 +1,5 @@
 /*eslint-disable*/
-// import {LOGOUT_SUCCESS} from "../../../types/account/login";
+import {LOGOUT_SUCCESS} from "../../../types/account/login";
 import {getCookie} from "../../../actions/app";
 
 let Symbol = require('es6-symbol');
@@ -61,7 +61,7 @@ export default store => next => action => {
             if (response.status === 403 || response.status === 401 || response.status === 404) {
                 return next({
                     response,
-                    type: "LOGOUT_SUCCESS"
+                    type: LOGOUT_SUCCESS
                 })
             } else {
                 if (response.status === 200) {

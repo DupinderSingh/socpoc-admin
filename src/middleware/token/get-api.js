@@ -1,4 +1,4 @@
-// import {LOGOUT_SUCCESS} from "../../types/account/login";
+import {LOGOUT_SUCCESS} from "../../types/account/login";
 
 /**
  * Created by Dupnder on 29/05/19.
@@ -61,7 +61,7 @@ export default store => next => action => {
             if (response.status === 403 || response.status === 401 || response.status === 404) {
                 return next({
                     response,
-                    type: "LOGOUT_SUCCESS"
+                    type: LOGOUT_SUCCESS
                 })
             }
             if (response.status === 200) {

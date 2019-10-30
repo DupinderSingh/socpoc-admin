@@ -28,7 +28,7 @@ class Login extends React.Component {
         const loginEmailCookie = getCookie("loginEmail");
         const loginPasswordCookie = getCookie("loginPassword");
         if (loginEmailCookie && loginPasswordCookie) {
-            document.getElementById("checkbox").classList.toggle("checked");
+            document.getElementById("checkbox").checked = true;
             this.props.dispatch(changeLoginForm({
                 ...this.props.loginForm,
                 email: loginEmailCookie,
@@ -60,7 +60,7 @@ class Login extends React.Component {
         }
         // handling all error and success message here...
         if (e.target.checkValidity()) {
-            if (document.getElementById("checkbox").classList.contains("checked")) {
+            if (document.getElementById("checkbox").checked === true) {
                 setCookie('loginEmail', this.props.email, 1440);
                 setCookie('loginPassword', this.props.password, 1440);
             } else {
@@ -84,7 +84,6 @@ class Login extends React.Component {
     rememberMe(e) {
         if (!this.props.loginPageLoading) {
             const target = e.target;
-            document.getElementById("checkbox").classList.toggle("checked");
             if (target.checked) {
                 setCookie('loginEmail', this.props.email, 1440);
                 setCookie('loginPassword', this.props.password, 1440);
@@ -150,10 +149,11 @@ class Login extends React.Component {
                                         <label className="container1">Remember Me
                                             <input
                                                 type="checkbox"
-                                                className="form-check-input form-check-custom" id="terms"
-                                                style={{display: "none"}}/><a
-                                                onClick={this.rememberMe.bind(this)} id="checkbox" href="#"
-                                                className=""/>
+                                                className="form-check-input form-check-custom"
+                                                style={{display: "none"}}
+                                                onClick={this.rememberMe.bind(this)} id="checkbox"/><a
+                                                href="#"
+                                            />
                                             <span className="checkmark"></span>
                                         </label>
                                         <Link to="/forgot-password">Forgot password?</Link>
