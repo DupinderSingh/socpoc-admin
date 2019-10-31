@@ -76,6 +76,7 @@ class Dashboard extends React.Component {
                                                  style={{cursor: "pointer"}}
                                                  onClick={() => this.activeInactiveUser(user._id)}>
                                                 <input type="checkbox" className="custom-control-input"
+                                                       style={{cursor: "pointer"}}
                                                        id="customSwitch1"
                                                        checked={user.status === 1}/>
                                                 <label className="custom-control-label" htmlFor="customSwitch1"/>
