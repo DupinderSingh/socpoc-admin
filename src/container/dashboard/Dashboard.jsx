@@ -4,7 +4,13 @@ import {withRouter} from 'react-router-dom';
 import Pagination from "react-js-pagination";
 import moment from "moment";
 import './Dashboard.css';
-import {changePageNumber, clearUsersApiResponse, getUsers} from "../../actions/dashbaord/dashboard";
+import {
+    activeInactivePerson,
+    changePageNumber,
+    clearActiveInactiveUserResponse,
+    clearUsersApiResponse,
+    getUsers
+} from "../../actions/dashbaord/dashboard";
 
 class Dashboard extends React.Component {
     componentDidMount() {
@@ -16,6 +22,17 @@ class Dashboard extends React.Component {
     handlePageChange(pageNumber) {
         this.props.dispatch(changePageNumber(pageNumber));
         this.props.dispatch(getUsers(pageNumber));
+    }
+
+    activeInactiveUser(id) {
+        this.props.dispatch(activeInactivePerson(id));
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (!nextProps.activeInactiveError && nextProps.activeInactiveUserStatus === 200) {
+            this.props.dispatch(getUsers(nextProps.usersPageNumber));
+            this.props.dispatch(clearActiveInactiveUserResponse());
+        }
     }
 
     render() {
@@ -35,14 +52,14 @@ class Dashboard extends React.Component {
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Country</th>
-                                <th scope="col">Active Status</th>
+                                <th scope="col">User Active</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             {
-                                !this.props.usersPageLoading && !this.props.usersError && this.props.users.length > 0 &&
+                                !this.props.usersError && this.props.users.length > 0 &&
                                 this.props.users.map((user, index) => (
                                     <tr>
                                         <th scope="row"></th>
@@ -54,7 +71,16 @@ class Dashboard extends React.Component {
                                         </td>
                                         <td>{user.email}</td>
                                         <td>{user.country}</td>
-                                        <td>{user.status === 1 ? "active" : "inactive"}</td>
+                                        <td>
+                                            <div className="custom-control custom-switch"
+                                                 style={{cursor: "pointer"}}
+                                                 onClick={() => this.activeInactiveUser(user._id)}>
+                                                <input type="checkbox" className="custom-control-input"
+                                                       id="customSwitch1"
+                                                       checked={user.status === 1}/>
+                                                <label className="custom-control-label" htmlFor="customSwitch1"/>
+                                            </div>
+                                        </td>
                                         <td>{moment(user.createdAt).fromNow()}</td>
                                         <td>
                                             <span><i className="material-icons">
@@ -116,7 +142,11 @@ const mapStateToProps = (state) => {
         usersError,
         usersMessage,
         users,
-        totalUsersCount
+        totalUsersCount,
+        activeInactiveUserPageLoading,
+        activeInactiveUserStatus,
+        activeInactiveError,
+        activeInactiveMessage
     } = state.dashboardReducer;
     return {
         usersPageNumber,
@@ -125,7 +155,11 @@ const mapStateToProps = (state) => {
         usersError,
         usersMessage,
         users,
-        totalUsersCount
+        totalUsersCount,
+        activeInactiveUserPageLoading,
+        activeInactiveUserStatus,
+        activeInactiveError,
+        activeInactiveMessage
     }
 };
 
