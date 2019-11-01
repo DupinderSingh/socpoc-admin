@@ -55,9 +55,9 @@ import {
 import {authApi, getCookie} from "../app";
 import {logoutQuick} from "../account/login";
 import {GET_API} from "../../middleware/token/get-api";
-import {CALL_DELETE_API_WITH_BODY} from "../../middleware/token/delete/delete-api-with-body";
 import {CALL_POST_API} from "../../middleware/token/post-api";
 import {PUT_API} from "../../middleware/token/put_api/put-api-with-body";
+import {PUT_API_WITHOUT_BODY} from "../../middleware/token/put_api/put-api-without-body";
 
 const AUTH_API = authApi();
 
@@ -182,8 +182,8 @@ export const clearAllPostResponse = () => {
 
 export const deletePost = (body) => {
     return {
-        [CALL_DELETE_API_WITH_BODY]: {
-            endpoint: AUTH_API + '/post/delete',
+        [PUT_API_WITHOUT_BODY]: {
+            endpoint: AUTH_API + '/admin/post-inactive/' + body.post_id,
             types: [DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE],
             body: JSON.stringify(body)
         }
@@ -212,8 +212,8 @@ export const clearAllCommentResponse = () => {
 };
 export const deleteComment = (body) => {
     return {
-        [CALL_DELETE_API_WITH_BODY]: {
-            endpoint: AUTH_API + '/comment/delete',
+        [PUT_API_WITHOUT_BODY]: {
+            endpoint: AUTH_API + '/admin/comment-inactive/' + body.comment_id,
             types: [DELETE_COMMENT_REQUEST, DELETE_COMMENT_SUCCESS, DELETE_COMMENT_FAILURE],
             body: JSON.stringify(body)
         }
