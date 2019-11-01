@@ -7,6 +7,7 @@ import Dashboard from './container/dashboard/Dashboard';
 import Login from "./container/account/login/Login";
 import Signup from "./container/account/signup/Signup";
 import Sidebar from "./components/dashboard/sidebar/Sidebar";
+import Posts from "./container/dashboard/posts/Posts";
 
 function checkAuth() {
     const {auth} = store.getState().loginReducer;
@@ -36,7 +37,8 @@ export function BodyWrapper(props) {
     return (
         <div>
             <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                <PrivateRoute path="/dashboard" component={Dashboard}/>
+                <PrivateRoute path="/posts" component={Posts}/>
                 <Redirect from="*" to='/dashboard'/>
             </Switch>
         </div>
