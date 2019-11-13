@@ -23,11 +23,11 @@ export function getCookie(name) {
 export function authApi() {
     switch (window.location.hostname) {
         case "localhost":
-            return "https://honeycombapi.iapplabz.co.in";
+            return "https://socpoc.iapplabz.co.in/api";
         case "192.168.1.107":
-            return "https://honeycombapi.iapplabz.co.in";
+            return "https://socpoc.iapplabz.co.in/api";
         default:
-            return "https://honeycombapi.iapplabz.co.in"
+            return "https://socpoc.iapplabz.co.in/api"
     }
 }
 

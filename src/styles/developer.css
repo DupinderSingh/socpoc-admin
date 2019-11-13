@@ -46,3 +46,9 @@ main table.custom-table td span i {
 ul.pagination li {
     padding: 10px !important;
 }
+
+.post_actions.comment_actions {
+    top: 40px !important;
+    right: 12px !important;
+    z-index: 9999 !important;
+}

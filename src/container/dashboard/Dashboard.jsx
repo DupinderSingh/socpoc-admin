@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import Pagination from "react-js-pagination";
 import moment from "moment";
 import './Dashboard.css';
+import "../../styles/js/index";
 import {
     activeInactivePerson,
     changePageNumber,
@@ -41,8 +42,8 @@ class Dashboard extends React.Component {
                 <div className="content-wrapper content-wrapper--with-bg">
                     <div className="top-header">
                         <h1 className="page-title">Dashboard</h1>
-                        <button type="button" className="btn btn-primary"><i className="fas fa-plus"></i><span>Add Member</span>
-                        </button>
+                        {/*<button type="button" className="btn btn-primary"><i className="fas fa-plus"></i><span>Add Member</span>*/}
+                        {/*</button>*/}
                     </div>
                     <div className="table-outer table-responsive">
                         <table className="table table-borderless custom-table">
@@ -52,7 +53,6 @@ class Dashboard extends React.Component {
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Country</th>
-                                <th scope="col">User Active</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
                             {
                                 !this.props.usersError && this.props.users.length > 0 &&
                                 this.props.users.map((user, index) => (
-                                    <tr>
+                                    <tr style={{backgroundColor: user.status !== 1 && "rgba(255, 0, 0, 0.36)"}}>
                                         <th scope="row"></th>
                                         <td><span className="image-user">
                                             <img
@@ -71,48 +71,13 @@ class Dashboard extends React.Component {
                                         </td>
                                         <td>{user.email}</td>
                                         <td>{user.country}</td>
-                                        <td>
-                                            <div className="custom-control custom-switch"
-                                                 style={{cursor: "pointer"}}
-                                                 onClick={() => this.activeInactiveUser(user._id)}>
-                                                <input type="checkbox" className="custom-control-input"
-                                                       style={{cursor: "pointer"}}
-                                                       id="customSwitch1"
-                                                       checked={user.status !== 1}/>
-                                                <label className="custom-control-label" htmlFor="customSwitch1"/>
-                                            </div>
-                                        </td>
                                         <td>{moment(user.createdAt).fromNow()}</td>
                                         <td>
-                                            <span><i className="material-icons">
-                                                visibility
-                                                </i></span>
-                                            <span><i className="material-icons">
-                                                edit
-                                                </i></span>
-                                            <span><i className="material-icons">
-                                                restore_from_trash
-                                                </i></span>
-                                            <div className="modal fade" id="exampleModalCenter" tabIndex="-1"
-                                                 role="dialog"
-                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div className="modal-dialog modal-dialog-centered" role="document">
-                                                    <div className="modal-content">
-                                                        <div className="modal-body text-center">
-                                                            <h4 className="sure">Are you sure ?</h4>
-                                                            <p>you want to delete John Smith</p>
-                                                            <div className="text-center button_action">
-                                                                <button type="button"
-                                                                        className="btn btn-secondary yes">Yes
-                                                                </button>
-                                                                <button type="button" className="btn btn-primary no"
-                                                                        data-dismiss="modal">No
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <button type="button" style={{cursor: "pointer"}}
+                                                    onClick={() => this.activeInactiveUser(user._id)}
+                                                    className="btn btn-primary">
+                                                <span>{user.status === 1 ? "Deactivate" : "Activate"}</span>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))

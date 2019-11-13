@@ -26,10 +26,10 @@ var Dashboard = function () {
 
         if ($("body").hasClass("sidebar-is-expanded")) {
             $('[data-toggle="tooltip"]').tooltip("dispose");
-            $('.sporti').css("display", "block");
+            $('.sporti').css("display","block");
         } else {
             $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
-            $('.sporti').css("display", "none");
+            $('.sporti').css("display","none");
         }
     };
 
@@ -46,7 +46,4 @@ var Dashboard = function () {
     };
 }();
 
-// $(function () {
-//     $('[data-toggle="tooltip"]').tooltip()
-// });
-
+Dashboard.init();

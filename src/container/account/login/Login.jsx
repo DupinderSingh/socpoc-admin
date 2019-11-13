@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from "jquery";
 import {connect} from "react-redux";
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './Login.css';
 import {getCookie, setCookie, windowTitle} from "../../../actions/app";
 import Input from "../../../components/app/input/Input";
@@ -128,9 +128,9 @@ class Login extends React.Component {
                                                name="email"
                                                onChange={this.handleChange.bind(this)}
                                                value={this.props.loginForm.email}
-                                               placeholder="User name/Email address"
+                                               placeholder="Enter your email address"
                                                id="exampleInputEmail1"/>
-                                        <p className="with-error">Please enter valid User Name/Email Address.</p>
+                                        <p className="with-error">Please enter valid Email Address.</p>
                                     </div>
                                     <div className="form-group">
                                         <div className="icon"><img src={require("../../../images/padlock.png")} alt=""/>
@@ -156,7 +156,7 @@ class Login extends React.Component {
                                             />
                                             <span className="checkmark"></span>
                                         </label>
-                                        <Link to="/forgot-password">Forgot password?</Link>
+                                        {/*<Link to="/forgot-password">Forgot password?</Link>*/}
 
                                     </div>
                                     <Button type="submit"
@@ -166,9 +166,9 @@ class Login extends React.Component {
                                                                 src={require("../../../images/btn_arrow.svg")}
                                                                 alt={"arrow"}/>
                                     </Button>
-                                    <div className="menmber text-center mt-4"><p>Don’t have account? <Link
-                                        to={"/signup"}>Sign
-                                        Up </Link>here.</p></div>
+                                    {/*<div className="menmber text-center mt-4"><p>Don’t have account? <Link*/}
+                                    {/*    to={"/signup"}>Sign*/}
+                                    {/*    Up </Link>here.</p></div>*/}
                                 </form>
                             </div>
                         </div>
